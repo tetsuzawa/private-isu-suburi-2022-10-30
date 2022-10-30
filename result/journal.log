@@ -1,112 +1,124 @@
-Oct 30 14:18:36 ip-192-168-0-11 systemd[1]: Stopping isu-go...
+Oct 30 14:56:53 ip-192-168-0-11 systemd[1]: Stopping isu-go...
 ░░ Subject: A stop job for unit isu-go.service has begun execution
 ░░ Defined-By: systemd
 ░░ Support: http://www.ubuntu.com/support
 ░░ 
 ░░ A stop job for unit isu-go.service has begun execution.
 ░░ 
-░░ The job identifier is 9806.
-Oct 30 14:18:36 ip-192-168-0-11 systemd[1]: isu-go.service: Deactivated successfully.
+░░ The job identifier is 10859.
+Oct 30 14:56:53 ip-192-168-0-11 systemd[1]: isu-go.service: Deactivated successfully.
 ░░ Subject: Unit succeeded
 ░░ Defined-By: systemd
 ░░ Support: http://www.ubuntu.com/support
 ░░ 
 ░░ The unit isu-go.service has successfully entered the 'dead' state.
-Oct 30 14:18:36 ip-192-168-0-11 systemd[1]: Stopped isu-go.
+Oct 30 14:56:53 ip-192-168-0-11 systemd[1]: Stopped isu-go.
 ░░ Subject: A stop job for unit isu-go.service has finished
 ░░ Defined-By: systemd
 ░░ Support: http://www.ubuntu.com/support
 ░░ 
 ░░ A stop job for unit isu-go.service has finished.
 ░░ 
-░░ The job identifier is 9806 and the job result is done.
-Oct 30 14:18:36 ip-192-168-0-11 systemd[1]: Started isu-go.
+░░ The job identifier is 10859 and the job result is done.
+Oct 30 14:56:53 ip-192-168-0-11 systemd[1]: isu-go.service: Consumed 8.931s CPU time.
+░░ Subject: Resources consumed by unit runtime
+░░ Defined-By: systemd
+░░ Support: http://www.ubuntu.com/support
+░░ 
+░░ The unit isu-go.service completed and consumed the indicated resources.
+Oct 30 14:56:53 ip-192-168-0-11 systemd[1]: Started isu-go.
 ░░ Subject: A start job for unit isu-go.service has finished successfully
 ░░ Defined-By: systemd
 ░░ Support: http://www.ubuntu.com/support
 ░░ 
 ░░ A start job for unit isu-go.service has finished successfully.
 ░░ 
-░░ The job identifier is 9806.
-Oct 30 14:18:37 ip-192-168-0-11 systemd[1]: Stopping A high performance web server and a reverse proxy server...
+░░ The job identifier is 10859.
+Oct 30 14:56:53 ip-192-168-0-11 systemd[1]: Stopping A high performance web server and a reverse proxy server...
 ░░ Subject: A stop job for unit nginx.service has begun execution
 ░░ Defined-By: systemd
 ░░ Support: http://www.ubuntu.com/support
 ░░ 
 ░░ A stop job for unit nginx.service has begun execution.
 ░░ 
-░░ The job identifier is 9887.
-Oct 30 14:18:37 ip-192-168-0-11 systemd[1]: nginx.service: Deactivated successfully.
+░░ The job identifier is 10940.
+Oct 30 14:56:53 ip-192-168-0-11 systemd[1]: nginx.service: Deactivated successfully.
 ░░ Subject: Unit succeeded
 ░░ Defined-By: systemd
 ░░ Support: http://www.ubuntu.com/support
 ░░ 
 ░░ The unit nginx.service has successfully entered the 'dead' state.
-Oct 30 14:18:37 ip-192-168-0-11 systemd[1]: Stopped A high performance web server and a reverse proxy server.
+Oct 30 14:56:53 ip-192-168-0-11 systemd[1]: Stopped A high performance web server and a reverse proxy server.
 ░░ Subject: A stop job for unit nginx.service has finished
 ░░ Defined-By: systemd
 ░░ Support: http://www.ubuntu.com/support
 ░░ 
 ░░ A stop job for unit nginx.service has finished.
 ░░ 
-░░ The job identifier is 9887 and the job result is done.
-Oct 30 14:18:37 ip-192-168-0-11 systemd[1]: Starting A high performance web server and a reverse proxy server...
+░░ The job identifier is 10940 and the job result is done.
+Oct 30 14:56:53 ip-192-168-0-11 systemd[1]: nginx.service: Consumed 1.004s CPU time.
+░░ Subject: Resources consumed by unit runtime
+░░ Defined-By: systemd
+░░ Support: http://www.ubuntu.com/support
+░░ 
+░░ The unit nginx.service completed and consumed the indicated resources.
+Oct 30 14:56:53 ip-192-168-0-11 systemd[1]: Starting A high performance web server and a reverse proxy server...
 ░░ Subject: A start job for unit nginx.service has begun execution
 ░░ Defined-By: systemd
 ░░ Support: http://www.ubuntu.com/support
 ░░ 
 ░░ A start job for unit nginx.service has begun execution.
 ░░ 
-░░ The job identifier is 9887.
-Oct 30 14:18:37 ip-192-168-0-11 systemd[1]: Started A high performance web server and a reverse proxy server.
+░░ The job identifier is 10940.
+Oct 30 14:56:53 ip-192-168-0-11 systemd[1]: Started A high performance web server and a reverse proxy server.
 ░░ Subject: A start job for unit nginx.service has finished successfully
 ░░ Defined-By: systemd
 ░░ Support: http://www.ubuntu.com/support
 ░░ 
 ░░ A start job for unit nginx.service has finished successfully.
 ░░ 
-░░ The job identifier is 9887.
-Oct 30 14:18:37 ip-192-168-0-11 systemd[1]: Stopping MySQL Community Server...
+░░ The job identifier is 10940.
+Oct 30 14:56:53 ip-192-168-0-11 systemd[1]: Stopping MySQL Community Server...
 ░░ Subject: A stop job for unit mysql.service has begun execution
 ░░ Defined-By: systemd
 ░░ Support: http://www.ubuntu.com/support
 ░░ 
 ░░ A stop job for unit mysql.service has begun execution.
 ░░ 
-░░ The job identifier is 9968.
-Oct 30 14:18:38 ip-192-168-0-11 systemd[1]: mysql.service: Deactivated successfully.
+░░ The job identifier is 11021.
+Oct 30 14:56:54 ip-192-168-0-11 systemd[1]: mysql.service: Deactivated successfully.
 ░░ Subject: Unit succeeded
 ░░ Defined-By: systemd
 ░░ Support: http://www.ubuntu.com/support
 ░░ 
 ░░ The unit mysql.service has successfully entered the 'dead' state.
-Oct 30 14:18:38 ip-192-168-0-11 systemd[1]: Stopped MySQL Community Server.
+Oct 30 14:56:54 ip-192-168-0-11 systemd[1]: Stopped MySQL Community Server.
 ░░ Subject: A stop job for unit mysql.service has finished
 ░░ Defined-By: systemd
 ░░ Support: http://www.ubuntu.com/support
 ░░ 
 ░░ A stop job for unit mysql.service has finished.
 ░░ 
-░░ The job identifier is 9968 and the job result is done.
-Oct 30 14:18:38 ip-192-168-0-11 systemd[1]: mysql.service: Consumed 1.514s CPU time.
+░░ The job identifier is 11021 and the job result is done.
+Oct 30 14:56:54 ip-192-168-0-11 systemd[1]: mysql.service: Consumed 9.015s CPU time.
 ░░ Subject: Resources consumed by unit runtime
 ░░ Defined-By: systemd
 ░░ Support: http://www.ubuntu.com/support
 ░░ 
 ░░ The unit mysql.service completed and consumed the indicated resources.
-Oct 30 14:18:38 ip-192-168-0-11 systemd[1]: Starting MySQL Community Server...
+Oct 30 14:56:54 ip-192-168-0-11 systemd[1]: Starting MySQL Community Server...
 ░░ Subject: A start job for unit mysql.service has begun execution
 ░░ Defined-By: systemd
 ░░ Support: http://www.ubuntu.com/support
 ░░ 
 ░░ A start job for unit mysql.service has begun execution.
 ░░ 
-░░ The job identifier is 9968.
-Oct 30 14:18:38 ip-192-168-0-11 systemd[1]: Started MySQL Community Server.
+░░ The job identifier is 11021.
+Oct 30 14:56:55 ip-192-168-0-11 systemd[1]: Started MySQL Community Server.
 ░░ Subject: A start job for unit mysql.service has finished successfully
 ░░ Defined-By: systemd
 ░░ Support: http://www.ubuntu.com/support
 ░░ 
 ░░ A start job for unit mysql.service has finished successfully.
 ░░ 
-░░ The job identifier is 9968.
+░░ The job identifier is 11021.

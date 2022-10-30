@@ -672,7 +672,7 @@ func postIndex(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	imageDir := "../../public/image"
+	imageDir := "../public/image"
 
 	imgFile := filepath.Join(imageDir, fmt.Sprintf("%d.%s", pid, ext))
 	f, err := os.Create(imgFile)
@@ -717,7 +717,7 @@ func getImage(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		imageDir := "../../public/image"
+		imageDir := "../public/image"
 		imgFile := filepath.Join(imageDir, fmt.Sprintf("%d.%s", pid, ext))
 		f, err := os.Create(imgFile)
 		if err != nil {
