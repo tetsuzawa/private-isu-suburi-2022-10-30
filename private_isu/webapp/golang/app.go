@@ -55,7 +55,7 @@ type Post struct {
 	CreatedAt    time.Time `db:"created_at"`
 	CommentCount int
 	Comments     []Comment
-	User         User
+	User         User `db:"user"`
 	CSRFToken    string
 }
 
@@ -206,19 +206,19 @@ func makePosts(results []Post, csrfToken string, allComments bool) ([]Post, erro
 
 		p.Comments = comments
 
-		err = db.Get(&p.User, "SELECT * FROM `users` WHERE `id` = ?", p.UserID)
-		if err != nil {
-			return nil, err
-		}
+		//err = db.Get(&p.User, "SELECT * FROM `users` WHERE `id` = ?", p.UserID)
+		//if err != nil {
+		//	return nil, err
+		//}
 
 		p.CSRFToken = csrfToken
 
-		if p.User.DelFlg == 0 {
-			posts = append(posts, p)
-		}
-		if len(posts) >= postsPerPage {
-			break
-		}
+		//if p.User.DelFlg == 0 {
+		posts = append(posts, p)
+		//}
+		//if len(posts) >= postsPerPage {
+		//	break
+		//}
 	}
 
 	return posts, nil
@@ -388,7 +388,8 @@ func getIndex(w http.ResponseWriter, r *http.Request) {
 
 	results := []Post{}
 
-	err := db.Select(&results, "SELECT `id`, `user_id`, `body`, `mime`, `created_at` FROM `posts` ORDER BY `created_at` DESC")
+	//err := db.Select(&results, "SELECT `id`, `user_id`, `body`, `mime`, `created_at` FROM `posts` ORDER BY `created_at` DESC")
+	err := db.Select(&results, "SELECT p.id, p.user_id, p.body, p.created_at, p.mime, u.account_name AS `user.account_name` FROM posts AS p JOIN users u ON p.user_id = u.id WHERE del_flg = 0 ORDER BY p.created_at DESC LIMIT 20")
 	if err != nil {
 		log.Print(err)
 		return
