@@ -1,0 +1,1 @@
+ALTER TABLE posts ADD INDEX idx_user_id (user_id);
