@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	crand "crypto/rand"
 	"fmt"
 	"html/template"
@@ -11,6 +12,7 @@ import (
 	"os"
 	"os/exec"
 	"path"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -18,7 +20,6 @@ import (
 
 	"github.com/bradfitz/gomemcache/memcache"
 	gsm "github.com/bradleypeabody/gorilla-sessions-memcache"
-	"github.com/go-chi/chi/v5"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/sessions"
 	"github.com/jmoiron/sqlx"
@@ -613,16 +614,19 @@ func postIndex(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	mime := ""
+	mime, ext := "", ""
 	if file != nil {
 		// 投稿のContent-Typeからファイルのタイプを決定する
 		contentType := header.Header["Content-Type"][0]
 		if strings.Contains(contentType, "jpeg") {
 			mime = "image/jpeg"
+			ext = "jpg"
 		} else if strings.Contains(contentType, "png") {
 			mime = "image/png"
+			ext = "png"
 		} else if strings.Contains(contentType, "gif") {
 			mime = "image/gif"
+			ext = "gif"
 		} else {
 			session := getSession(r)
 			session.Values["notice"] = "投稿できる画像形式はjpgとpngとgifだけです"
@@ -653,7 +657,7 @@ func postIndex(w http.ResponseWriter, r *http.Request) {
 		query,
 		me.ID,
 		mime,
-		filedata,
+		[]byte{},
 		r.FormValue("body"),
 	)
 	if err != nil {
@@ -662,6 +666,21 @@ func postIndex(w http.ResponseWriter, r *http.Request) {
 	}
 
 	pid, err := result.LastInsertId()
+	if err != nil {
+		log.Print(err)
+		return
+	}
+
+	imageDir := "../../public/image"
+
+	imgFile := filepath.Join(imageDir, fmt.Sprintf("%d.%s", pid, ext))
+	f, err := os.Create(imgFile)
+	if err != nil {
+		log.Print(err)
+		return
+	}
+	defer f.Close()
+	_, err = io.Copy(f, bytes.NewReader(filedata))
 	if err != nil {
 		log.Print(err)
 		return
@@ -696,6 +715,21 @@ func getImage(w http.ResponseWriter, r *http.Request) {
 			log.Print(err)
 			return
 		}
+
+		imageDir := "../../public/image"
+		imgFile := filepath.Join(imageDir, fmt.Sprintf("%d.%s", pid, ext))
+		f, err := os.Create(imgFile)
+		if err != nil {
+			log.Print(err)
+			return
+		}
+		defer f.Close()
+		_, err = io.Copy(f, bytes.NewReader(post.Imgdata))
+		if err != nil {
+			log.Print(err)
+			return
+		}
+
 		return
 	}
 
