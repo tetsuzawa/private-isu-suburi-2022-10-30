@@ -1,0 +1,154 @@
+
+# 1.6s user time, 10ms system time, 37.30M rss, 51.00M vsz
+# Current date: Sun Oct 30 13:50:02 2022
+# Hostname: ip-192-168-0-11
+# Files: /var/log/mysql/mysqld-slow.log
+# Overall: 27.93k total, 31 unique, 247.17 QPS, 13.67x concurrency _______
+# Time range: 2022-10-30T04:48:07 to 2022-10-30T04:50:00
+# Attribute          total     min     max     avg     95%  stddev  median
+# ============     ======= ======= ======= ======= ======= ======= =======
+# Exec time          1545s     1us      1s    55ms   393ms   198ms    60us
+# Lock time           22ms       0     4ms       0     1us    31us       0
+# Rows sent        607.90k       0   9.77k   22.29    2.90  445.96       0
+# Rows examine     288.86M       0  97.67k  10.59k  97.04k  30.11k       0
+# Query size         1.08M      16  75.40k   40.48   80.10  443.67   31.70
+
+# Profile
+# Rank Query ID                      Response time   Calls R/Call V/M   It
+# ==== ============================= =============== ===== ====== ===== ==
+#    1 0x624863D30DAC59FA16849282... 1142.9344 74.0%  1474 0.7754  0.19 SELECT comments
+#    2 0x422390B42D4DD86C7539A5F4...  351.7427 22.8%  1494 0.2354  0.06 SELECT comments
+#    4 0x100EC8B5C400F34381F9D7F7...   10.7371  0.7%    20 0.5369  0.16 SELECT comments
+# MISC 0xMISC                          39.3427  2.5% 24942 0.0016   0.0 <28 ITEMS>
+
+# Query 1: 17.55 QPS, 13.61x concurrency, ID 0x624863D30DAC59FA16849282195BE09F at byte 4181366
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.19
+# Time range: 2022-10-30T04:48:07 to 2022-10-30T04:49:31
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          5    1474
+# Exec time     73   1143s    37ms      1s   775ms      1s   383ms   816ms
+# Lock time     32     7ms       0     4ms     4us     2us    95us     1us
+# Rows sent      0   4.14k       0       3    2.88    2.90    0.57    2.90
+# Rows examine  48 140.58M  97.66k  97.66k  97.66k  97.04k       0  97.04k
+# Query size    10 118.13k      80      83   82.07   80.10    0.14   80.10
+# String:
+# Databases    isuconp
+# Hosts        localhost
+# Users        isuconp
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ############
+# 100ms  ################################################################
+#    1s  ################################
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `isuconp` LIKE 'comments'\G
+#    SHOW CREATE TABLE `isuconp`.`comments`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+SELECT * FROM `comments` WHERE `post_id` = 9994 ORDER BY `created_at` DESC LIMIT 3\G
+# *************************** 1. row ***************************
+#            id: 1
+#   select_type: SIMPLE
+#         table: comments
+#    partitions: NULL
+#          type: ALL
+# possible_keys: NULL
+#           key: NULL
+#       key_len: NULL
+#           ref: NULL
+#          rows: 97209
+#      filtered: 10.00
+#         Extra: Using where; Using filesort
+
+# Query 2: 17.79 QPS, 4.19x concurrency, ID 0x422390B42D4DD86C7539A5F45EB76A80 at byte 4185003
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.06
+# Time range: 2022-10-30T04:48:07 to 2022-10-30T04:49:31
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          5    1494
+# Exec time     22    352s    12ms   633ms   235ms   412ms   120ms   241ms
+# Lock time      8     2ms       0    18us     1us     1us       0     1us
+# Rows sent      0   1.46k       1       1       1       1       0       1
+# Rows examine  49 142.48M  97.66k  97.66k  97.66k  97.04k    0.00  97.04k
+# Query size     8  94.93k      63      66   65.07   65.89    0.86   62.76
+# String:
+# Databases    isuconp
+# Hosts        localhost
+# Users        isuconp
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  #########
+# 100ms  ################################################################
+#    1s
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `isuconp` LIKE 'comments'\G
+#    SHOW CREATE TABLE `isuconp`.`comments`\G
+# EXPLAIN 
+SELECT COUNT(*) AS `count` FROM `comments` WHERE `post_id` = 9983\G
+# *************************** 1. row ***************************
+#            id: 1
+#   select_type: SIMPLE
+#         table: comments
+#    partitions: NULL
+#          type: ALL
+# possible_keys: NULL
+#           key: NULL
+#       key_len: NULL
+#           ref: NULL
+#          rows: 97209
+#      filtered: 10.00
+#         Extra: Using where
+
+# Query 4: 0.50 QPS, 0.27x concurrency, ID 0x100EC8B5C400F34381F9D7F7FA80A53D at byte 3372022
+# This item is included in the report because it matches --outliers.
+# Scores: V/M = 0.16
+# Time range: 2022-10-30T04:48:09 to 2022-10-30T04:48:49
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count          0      20
+# Exec time      0     11s    37ms      1s   537ms      1s   293ms   477ms
+# Lock time      0    36us     1us     3us     1us     2us       0     1us
+# Rows sent      0     223       0      16   11.15   15.25    3.63   10.84
+# Rows examine   0   1.91M  97.66k  97.67k  97.67k  97.04k       0  97.04k
+# Query size     0   1.45k      74      75   74.05   72.65       0   72.65
+# String:
+# Databases    isuconp
+# Hosts        localhost
+# Users        isuconp
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms  ########
+# 100ms  ################################################################
+#    1s  ########
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `isuconp` LIKE 'comments'\G
+#    SHOW CREATE TABLE `isuconp`.`comments`\G
+# EXPLAIN 
+SELECT * FROM `comments` WHERE `post_id` = 9997 ORDER BY `created_at` DESC\G
+# *************************** 1. row ***************************
+#            id: 1
+#   select_type: SIMPLE
+#         table: comments
+#    partitions: NULL
+#          type: ALL
+# possible_keys: NULL
+#           key: NULL
+#       key_len: NULL
+#           ref: NULL
+#          rows: 97209
+#      filtered: 10.00
+#         Extra: Using where; Using filesort
